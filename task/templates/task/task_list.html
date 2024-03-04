@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список задач</title>
+</head>
+<body>
+    <h2>Список задач</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }} - Приоритет: {{ task.get_priority_display }} - Статус: {{ task.get_status_display }}
+                [<a href="{% url 'edit_task' pk=task.pk %}">Редактировать</a>]
+                [<a href="{% url 'delete_task' pk=task.pk %}">Удалить</a>]
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_task' %}">Создать новую задачу</a>
+</body>
+</html>
